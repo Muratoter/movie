@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.moter.tmdb.ui.model.MovieDetailUIState" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:context=".detail.DetailFragment">
+
+                <ImageView
+                    android:id="@+id/ivMoviePoster"
+                    setPoster="@{movie.poster}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/slider_height"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/temp_movie_poster" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/item_padding"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivMoviePoster">
+
+                    <ImageView
+                        android:id="@+id/ivIMDB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/imdb_logo"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/list_item_padding_1"
+                        android:src="@drawable/rate_icon"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivIMDB"
+                        app:layout_constraintStart_toEndOf="@+id/ivIMDB"
+                        app:layout_constraintTop_toTopOf="@+id/ivIMDB" />
+
+                    <TextView
+                        android:id="@+id/tvVoteAverage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/list_item_padding_1"
+                        android:text="@{movie.voteAverage}"
+                        android:textColor="@color/list_item_title_color"
+                        android:textSize="@dimen/detail_vote_average_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivRate"
+                        app:layout_constraintStart_toEndOf="@+id/ivRate"
+                        app:layout_constraintTop_toTopOf="@+id/ivRate"
+                        tools:text="7.8" />
+
+                    <TextView
+                        android:id="@+id/tvVoteAverageMax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_vote_text"
+                        android:textColor="@color/list_item_overlay_color"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvVoteAverage"
+                        app:layout_constraintStart_toEndOf="@+id/tvVoteAverage"
+                        app:layout_constraintTop_toTopOf="@+id/tvVoteAverage" />
+
+                    <ImageView
+                        android:id="@+id/ivBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/list_item_padding_1"
+                        android:src="@drawable/ic_badge"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvVoteAverageMax"
+                        app:layout_constraintStart_toEndOf="@+id/tvVoteAverageMax"
+                        app:layout_constraintTop_toTopOf="@+id/tvVoteAverageMax" />
+
+                    <TextView
+                        android:id="@+id/tvRelease"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/list_item_padding_1"
+                        android:text="@{movie.release}"
+                        android:textColor="@color/list_item_title_color"
+                        android:textSize="@dimen/detail_release_size"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivBadge"
+                        app:layout_constraintStart_toEndOf="@+id/ivBadge"
+                        app:layout_constraintTop_toTopOf="@+id/ivBadge"
+                        tools:text="15.06.2021" />
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/detail_margin_1"
+                        android:text="@{movie.title}"
+                        android:textColor="@color/list_item_title_color"
+                        android:textSize="@dimen/detail_title_size"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivIMDB"
+                        tools:text="Moonrise Kingdom (2012)" />
+
+                    <TextView
+                        android:id="@+id/tvOverview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/detail_margin_1"
+                        android:text="@{movie.overview}"
+                        android:textColor="@color/list_item_title_color"
+                        android:textSize="@dimen/detail_overview_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                        tools:text="Moonrise Kingdom is a 2012 American coming-of-age comedy-drama film directed by Wes Anderson, written by Anderson and Roman Coppola. It features an ensemble cast including Bruce Willis, Edward Norton, Bill Murray, Frances McDormand, Tilda Swinton, Jason Schwartzman, Bob Balaban, Harvey Keitel, and newcomers Jared Gilman and Kara Hayward. Largely set on the fictional New England island of New Penzance, it tells the story of an orphan boy (Gilman) who escapes from a scouting camp to unite with his pen pal and love interest, a girl with aggressive tendencies (Hayward). Feeling alienated from their guardians and shunned by their peers, the lovers abscond to an isolated beach. Meanwhile, the island's police captain (Willis) organizes a search party of scouts and family members to locate the runaways.In crafting their screenplay, Anderson and Coppola drew from personal experiences and memories of" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

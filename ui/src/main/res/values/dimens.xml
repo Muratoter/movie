@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="slider_height">256dp</dimen>
+    <dimen name="slider_overview">12sp</dimen>
+    <dimen name="slider_title">20sp</dimen>
+    <dimen name="slider_padding">16dp</dimen>
+    <dimen name="slider_item_margin">8dp</dimen>
+    <dimen name="slider_dots_height">24dp</dimen>
+    <dimen name="list_item_image_size">104dp</dimen>
+    <dimen name="list_item_padding">16dp</dimen>
+    <dimen name="list_item_title_text">15sp</dimen>
+    <dimen name="list_item_overlay_text">13sp</dimen>
+    <dimen name="list_item_release_text">12sp</dimen>
+    <dimen name="list_item_padding_1">8dp</dimen>
+    <dimen name="item_padding">16dp</dimen>
+    <dimen name="detail_vote_average_size">13sp</dimen>
+    <dimen name="detail_title_size">20sp</dimen>
+    <dimen name="detail_overview_size">15sp</dimen>
+    <dimen name="detail_release_size">13sp</dimen>
+    <dimen name="detail_margin_1">16dp</dimen>
+    <dimen name="badge_size">4dp</dimen>
+</resources>

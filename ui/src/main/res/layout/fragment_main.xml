@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.moter.tmdb.ui.main.MainViewModel" />
+
+        <variable
+            name="sliderAdapter"
+            type="com.moter.tmdb.ui.main.adapter.SliderAdapter" />
+
+        <import type="java.util.List" />
+
+        <import type="com.moter.tmdb.ui.model.NowPlayingUIState" />
+
+        <variable
+            name="nowPlayingList"
+            type="List&lt;NowPlayingUIState>" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true"
+            tools:context=".main.MainFragment">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerNowPlaying"
+                customAdapter="@{sliderAdapter}"
+                dotsIndicator="@{dotsIndicator}"
+                items="@{nowPlayingList}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/slider_height"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@drawable/temp_movie_poster" />
+
+            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/dotsIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                app:dotsColor="@color/dots_inactive_color"
+                app:dotsCornerRadius="8dp"
+                app:dotsSize="6dp"
+                app:dotsSpacing="3dp"
+                app:dotsWidthFactor="2.5"
+                app:layout_constraintBottom_toBottomOf="@+id/viewPagerNowPlaying"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:progressMode="true"
+                app:selectedDotColor="@color/dots_active_color" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUpComingMovies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPagerNowPlaying"
+                tools:itemCount="6"
+                tools:listitem="@layout/custom_movie_list_item"
+                tools:showIn="@layout/custom_movie_list_item" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

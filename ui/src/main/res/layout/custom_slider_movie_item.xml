@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.moter.tmdb.ui.model.NowPlayingUIState" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:id="@+id/clContent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivMoviePoster"
+            setPoster="@{movie.poster}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/slider_height"
+            android:foreground="@color/slider_image_foreground"
+            android:foregroundTintMode="src_atop"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/temp_movie_poster" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/slider_item_margin"
+            android:paddingHorizontal="@dimen/slider_padding"
+            android:text="@{movie.title}"
+            android:textColor="@color/slider_text_color"
+            android:textSize="@dimen/slider_title"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvOverview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Moonrise Kingdom (2012)" />
+
+        <TextView
+            android:id="@+id/tvOverview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/slider_dots_height"
+            android:paddingHorizontal="@dimen/slider_padding"
+            android:text="@{movie.overview}"
+            android:textColor="@color/slider_text_color"
+            android:textSize="@dimen/slider_overview"
+            app:layout_constraintBottom_toBottomOf="@+id/ivMoviePoster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="A pair of young lovers flee their New England town, which causes a local search party to fan out to find them." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
